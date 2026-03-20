@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insist Family Office</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson:        #8B1A1A;
+      --crimson-bright: #B52020;
+      --crimson-deep:   #5C0F0F;
+      --crimson-glow:   rgba(139, 26, 26, 0.18);
+      --dark:           #0b0707;
+      --dark-2:         #140c0c;
+      --dark-3:         #1c1010;
+      --white:          #ffffff;
+      --off-white:      #f7f3ef;
+      --cream:          #f0ebe4;
+      --muted-light:    rgba(255,255,255,0.45);
+      --muted-dark:     #7a6a6a;
+      --border-dark:    rgba(255,255,255,0.08);
+      --border-light:   rgba(139,26,26,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: var(--dark);
+      color: var(--white);
+      line-height: 1.75;
+    }
+
+    /* ─────────────────────── NAV ─────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6vw;
+      height: 70px;
+      background: rgba(11, 7, 7, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo .red { color: var(--crimson-bright); font-weight: 600; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--crimson-bright); }
+
+    /* ─────────────────────── HERO ─────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 130px 6vw 90px;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    /* subtle radial red glow top-left */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; left: -5%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(139,26,26,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* thin vertical red rule */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 15%; right: 6vw;
+      width: 1px;
+      height: 55%;
+      background: linear-gradient(to bottom, transparent, var(--crimson), transparent);
+      opacity: 0.4;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--crimson-bright);
+      margin-bottom: 1.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.4rem, 7.5vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.06;
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 2.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--crimson-bright);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--crimson);
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted-light);
+      max-width: 520px;
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─────────────────────── SECTION SHELL ─────────────────────── */
+    section { padding: 100px 6vw; }
+
+    .section-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--crimson-bright);
+      margin-bottom: 0.9rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.18;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--crimson);
+      margin-bottom: 3rem;
+    }
+
+    /* ─────────────────────── ABOUT ─────────────────────── */
+    #about {
+      background: var(--off-white);
+      color: var(--dark);
+    }
+
+    #about .section-label { color: var(--crimson); }
+    #about .section-title { color: var(--dark-2); }
+    #about .section-rule  { background: var(--crimson); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #4a3535;
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+
+    .about-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-box {
+      padding: 2rem 1.6rem;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-top: 3px solid var(--crimson);
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--crimson);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--muted-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────── INVESTMENTS ─────────────────────── */
+    #investments {
+      background: var(--dark-2);
+    }
+
+    #investments .section-title { color: var(--white); }
+
+    .investments-intro {
+      max-width: 580px;
+      font-size: 1rem;
+      color: var(--muted-light);
+      margin-bottom: 3.5rem;
+      line-height: 1.85;
+    }
+
+    .investment-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+
+    .investment-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      padding: 2rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      text-decoration: none;
+      transition: all 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .investment-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 110%, var(--crimson-glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .investment-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--crimson-bright);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .investment-card:hover {
+      border-color: rgba(139,26,26,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .investment-card:hover::before { opacity: 1; }
+    .investment-card:hover::after  { transform: scaleX(1); }
+
+    .investment-logo {
+      width: 80px;
+      height: 48px;
+      object-fit: contain;
+      filter: brightness(0) invert(1) opacity(0.65);
+      transition: filter 0.28s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .investment-card:hover .investment-logo {
+      filter: brightness(0) invert(1) opacity(1);
+    }
+
+    .investment-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .investment-sector {
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--crimson-bright);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .investment-arrow {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .investment-card:hover .investment-arrow { color: var(--crimson-bright); }
+
+    /* ─────────────────────── TEAM ─────────────────────── */
+    #team {
+      background: var(--dark);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    #team .section-title { color: var(--white); }
+
+    .team-intro {
+      font-size: 1rem;
+      color: var(--muted-light);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      line-height: 1.85;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      padding: 1.8rem 2rem;
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      text-decoration: none;
+      transition: all 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--crimson);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover {
+      background: rgba(28, 16, 16, 0.9);
+      border-color: rgba(139,26,26,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+
+    .team-card:hover::after { transform: scaleY(1); }
+
+    .team-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--crimson-deep);
+      border: 1px solid var(--crimson);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.25s;
+    }
+
+    .team-card:hover .team-avatar { background: var(--crimson); }
+
+    .team-avatar span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .team-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson-bright);
+      margin-bottom: 0.35rem;
+    }
+
+    .team-linkedin {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted-light);
+    }
+
+    .li-icon {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      fill: var(--muted-light);
+    }
+
+    /* ─────────────────────── FOOTER ─────────────────────── */
+    footer {
+      background: #060303;
+      padding: 2.8rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(139,26,26,0.2);
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-brand .red { color: var(--crimson-bright); }
+
+    .footer-copy {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.22);
+    }
+
+    /* ─────────────────────── RESPONSIVE ─────────────────────── */
+    @media (max-width: 960px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .investment-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 4vw; }
+      .nav-links { gap: 1.5rem; }
+      .investment-grid { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 70px 5vw; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-logo" href="#"><span class="red">insist</span> Family Office</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#investments">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <p class="hero-eyebrow">insist Family Office</p>
+    <h1>Investing with<br /><em>conviction</em><br />and purpose.</h1>
+    <div class="hero-divider"></div>
+    <p>
+      Insist Family Office is a private investment vehicle dedicated to backing
+      exceptional founders building transformative businesses across emerging and
+      frontier categories.
+    </p>
+    <p>
+      We take a long-term view, partnering with companies where technology and
+      purpose intersect — from intelligent consumer products to sustainable living
+      and the future of mobility.
+    </p>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Our approach</p>
+        <h2 class="section-title">Patient capital.<br />Active partnership.</h2>
+        <div class="section-rule"></div>
+        <p>
+          At Insist Family Office, we believe that lasting value is created at the
+          intersection of bold vision and disciplined execution. We invest in
+          founders who are uncompromising in their ambition and purposeful in how
+          they build.
+        </p>
+        <p>
+          Our focus spans consumer technology, robotics &amp; automation, sustainable
+          products, and financial inclusion — sectors we believe are at the leading
+          edge of structural, generational change in India and beyond.
+        </p>
+        <p>
+          Beyond capital, we bring a network of relationships, operational
+          experience, and strategic guidance to help our portfolio companies
+          navigate critical inflection points.
+        </p>
+      </div>
+      <div class="about-stat-grid">
+        <div class="stat-box">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Portfolio companies</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Sectors</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">Long</div>
+          <div class="stat-label">Term horizon</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">India</div>
+          <div class="stat-label">Primary focus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INVESTMENTS ── -->
+  <section id="investments">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Key investments</h2>
+    <div class="section-rule"></div>
+    <p class="investments-intro">
+      We have made strategic investments in category-defining businesses that are
+      reshaping how people live, move, work, and transact. Click on any company
+      to learn more.
+    </p>
+
+    <div class="investment-grid">
+
+      <a class="investment-card" href="https://miko.ai/" target="_blank" rel="noopener">
+        <img class="investment-logo" src="https://logo.clearbit.com/miko.ai" alt="Miko"
+          onerror="this.style.display='none';" />
+        <div class="investment-name">Miko</div>
+        <div class="investment-sector">Consumer Robotics</div>
+        <div class="investment-arrow">Visit →</div>
+      </a>
+
+      <a class="investment-card" href="https://www.matter.in/" target="_blank" rel="noopener">
+        <img class="investment-logo" src="https://logo.clearbit.com/matter.in" alt="Matter"
+          onerror="this.style.display='none';" />
+        <div class="investment-name">Matter</div>
+        <div class="investment-sector">EV Mobility</div>
+        <div class="investment-arrow">Visit →</div>
+      </a>
+
+      <a class="investment-card" href="https://www.unboxrobotics.com/" target="_blank" rel="noopener">
+        <img class="investment-logo" src="https://logo.clearbit.com/unboxrobotics.com" alt="Unbox Robotics"
+          onerror="this.style.display='none';" />
+        <div class="investment-name">Unbox Robotics</div>
+        <div class="investment-sector">Warehouse Automation</div>
+        <div class="investment-arrow">Visit →</div>
+      </a>
+
+      <a class="investment-card" href="https://www.incred.com/" target="_blank" rel="noopener">
+        <img class="investment-logo" src="https://logo.clearbit.com/incred.com" alt="InCred"
+          onerror="this.style.display='none';" />
+        <div class="investment-name">InCred</div>
+        <div class="investment-sector">Fintech Lending</div>
+        <div class="investment-arrow">Visit →</div>
+      </a>
+
+      <a class="investment-card" href="https://koparoclean.com/" target="_blank" rel="noopener">
+        <img class="investment-logo" src="https://logo.clearbit.com/koparoclean.com" alt="Koparo"
+          onerror="this.style.display='none';" />
+        <div class="investment-name">Koparo</div>
+        <div class="investment-sector">Sustainable Living</div>
+        <div class="investment-arrow">Visit →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── TEAM ── -->
+  <section id="team">
+    <p class="section-label">People</p>
+    <h2 class="section-title">Our team</h2>
+    <div class="section-rule"></div>
+    <p class="team-intro">
+      Behind Insist Family Office is a team of experienced operators and investors
+      with deep roots in building and scaling businesses across India.
+    </p>
+
+    <div class="team-grid">
+
+      <!-- R Suresh -->
+      <a class="team-card" href="https://www.linkedin.com/in/r-suresh-674364177/" target="_blank" rel="noopener">
+        <div class="team-avatar"><span>RS</span></div>
+        <div class="team-info">
+          <div class="team-name">R Suresh</div>
+          <div class="team-role">Managing Director</div>
+          <div class="team-linkedin">
+            <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn Profile
+          </div>
+        </div>
+      </a>
+
+      <!-- Arjun Suresh -->
+      <a class="team-card" href="https://www.linkedin.com/in/arjun-suresh-rf/" target="_blank" rel="noopener">
+        <div class="team-avatar"><span>AS</span></div>
+        <div class="team-info">
+          <div class="team-name">Arjun Suresh</div>
+          <div class="team-role">Director</div>
+          <div class="team-linkedin">
+            <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn Profile
+          </div>
+        </div>
+      </a>
+
+      <!-- K Venkatraman -->
+      <a class="team-card" href="https://www.linkedin.com/in/venkataraman-k-8a13068b/" target="_blank" rel="noopener">
+        <div class="team-avatar"><span>KV</span></div>
+        <div class="team-info">
+          <div class="team-name">K Venkatraman</div>
+          <div class="team-role">Finance and Legal</div>
+          <div class="team-linkedin">
+            <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn Profile
+          </div>
+        </div>
+      </a>
+
+      <!-- Bindu Rajeevlal -->
+      <a class="team-card" href="https://www.linkedin.com/in/bindu-rajeevlal-b258319/" target="_blank" rel="noopener">
+        <div class="team-avatar"><span>BR</span></div>
+        <div class="team-info">
+          <div class="team-name">Bindu Rajeevlal</div>
+          <div class="team-role">Research</div>
+          <div class="team-linkedin">
+            <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn Profile
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand"><span class="red">insist</span> Family Office</div>
+    <div class="footer-copy">&copy; 2025 Insist Family Office. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
