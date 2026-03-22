@@ -326,6 +326,52 @@
 
     .investment-card:hover .investment-arrow { color: var(--crimson); }
 
+    /* ─────────────────────── LP BLOCK ─────────────────────── */
+    .lp-block {
+      margin-top: 3rem;
+      padding: 2.2rem 2.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+    }
+
+    .lp-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.7rem;
+    }
+
+    .lp-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .lp-funds {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.8rem;
+    }
+
+    .lp-fund {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+
+    .lp-sep {
+      color: var(--border-strong);
+      font-size: 1rem;
+    }
+
     /* ─────────────────────── STEALTH BLOCK ─────────────────────── */
     .stealth-block {
       margin-top: 3rem;
@@ -546,14 +592,14 @@
   <!-- ── HERO ── -->
   <div class="hero">
     <p class="hero-eyebrow">insist Family Office</p>
-    <h1>Long-term capital<br />for founders who<br />think in <em>decades.</em></h1>
+    <h1>Intellectual and<br />financial <em>fuel</em><br />for committed entrepreneurs.</h1>
     <div class="hero-divider"></div>
     <p>
       Insist Family Office is the private investment vehicle of R Suresh and family.
-      R Suresh is a pioneer in Executive Search and Leadership Consulting in India,
-      with over 30 years of experience building category-defining firms — including
-      Stanton Chase India (acquired by Recruit Holdings, Japan), Recruit India,
-      and now Insist Consulting.
+      R Suresh is a pioneer in executive search, talent and leadership consulting in India,
+      with over 30 years of experience. He founded, grew and successfully exited two
+      market-leading firms — Stanton Chase India, acquired by Recruit Holdings, and
+      People One Consulting, acquired by Adecco.
     </p>
     <p>
       Arjun Suresh, son of R Suresh, brings a decade of product development
@@ -562,8 +608,8 @@
       (now Aurora), and holds a Master's degree from Carnegie Mellon University.
     </p>
     <p>
-      The family office invests across listed equity, private equity, and
-      early stage companies — with a focus on robotics, AI, healthcare and sustainability.
+      The family office invests across private equity, fund of funds and early stage
+      companies — with a focus on robotics, AI, healthcare and sustainability.
     </p>
   </div>
 
@@ -603,9 +649,8 @@
     <h2 class="section-title">Key investments</h2>
     <div class="section-rule"></div>
     <p class="investments-intro">
-      We have made strategic investments in category-defining businesses that are
-      reshaping how people live, move, work, and transact. Click on any company
-      to learn more.
+      We are early investors in promising businesses that are reshaping how people
+      live, move, work, and transact. Click on any company to learn more.
     </p>
 
     <div class="investment-grid">
@@ -650,6 +695,26 @@
         <div class="investment-arrow">Visit →</div>
       </a>
 
+    </div>
+
+    <!-- LP BLOCK -->
+    <div class="lp-block">
+      <div class="lp-label">Fund of Funds</div>
+      <p class="lp-desc">
+        We hold LP positions in a select group of India's leading growth funds,
+        deepening our commitment across sequential fund series.
+      </p>
+      <div class="lp-funds">
+        <span class="lp-fund">TVS Capital</span>
+        <span class="lp-sep">·</span>
+        <span class="lp-fund">Colossa Ventures</span>
+        <span class="lp-sep">·</span>
+        <span class="lp-fund">Multiples Equity</span>
+        <span class="lp-sep">·</span>
+        <span class="lp-fund">Yali Capital</span>
+        <span class="lp-sep">·</span>
+        <span class="lp-fund">Trident Capital</span>
+      </div>
     </div>
 
     <!-- STEALTH BLOCK -->
